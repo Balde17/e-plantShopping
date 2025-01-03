@@ -188,6 +188,20 @@ body {
 
     
 }
+.cart-count {
+    position: absolute;
+    top: 40px; /* Ajuste cette valeur pour déplacer le compteur vers le bas ou le haut */
+    right: 40px; /* Ajuste cette valeur pour déplacer le compteur vers la gauche ou la droite */
+    color: white;
+    border-radius: 50%;
+    width: 18px; /* Taille du cercle */
+    height: 18px; /* Taille du cercle */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 15px; /* Taille du texte dans le cercle */
+    font-weight: bold;
+}
 /* Add Media Query for responsiveness */
 @media (max-width: 768px) {
     .product-card {

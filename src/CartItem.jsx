@@ -10,15 +10,26 @@ const CartItem = ({ onContinueShopping }) => {
   // Calculate total amount for all products in the cart
   const calculateTotalAmount = () => {
     return cart.reduce((total, item) => {
-      return total + item.quantity * item.cost;
+      // Supprimer le symbole '$' et les autres caractères non numériques avant de convertir en nombre
+      const cost = parseFloat(item.cost.replace('$', '').trim());  
+      const quantity = parseInt(item.quantity, 10);  // Assurer que la quantité est un entier
+  
+      // Vérification si les valeurs sont des nombres valides
+      if (isNaN(cost) || isNaN(quantity)) {
+        console.error(`Invalid cost or quantity for item ${item.name}: cost = ${cost}, quantity = ${quantity}`);
+        return total;  // Retourner le total actuel sans ajouter cet item
+      }
+  
+      return total + (cost * quantity);
     }, 0);
   };
+  
+  
+
 
   const handleContinueShopping = (e) => {
-   onContinueShopping(); 
+   onContinueShopping(e); 
   };
-
-
 
   const handleIncrement = (item) => {
     dispatch(updateQuantity({ id: item.id, quantity: item.quantity + 1 }));
