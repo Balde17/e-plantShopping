@@ -2,6 +2,7 @@ import React, { useState,useEffect } from 'react';
 import './ProductList.css'
 import CartItem from './CartItem';
 import { addItem } from './CartSlice';
+import { useDispatch } from 'react-redux';
 
 function ProductList() {
     const [showCart, setShowCart] = useState(false); 
@@ -249,6 +250,7 @@ const handlePlantsClick = (e) => {
     setShowCart(false);
   };
   const [addedToCart, setAddedToCart] = useState({});
+  const dispatch = useDispatch();
   const handleAddToCart = (product) => {
     dispatch(addItem(product));
     setAddedToCart((prevState) => ({
@@ -266,7 +268,7 @@ const handlePlantsClick = (e) => {
                     <a href="/" style={{textDecoration:'none'}}>
                         <div>
                             <h3 style={{color:'white'}}>Paradise Nursery</h3>
-                            <i style={{color:'white'}}>Where Green Meets Serenity</i>
+                            <i style={{color:'white'}}>Where Green Meets Serenity17</i>
                         </div>
                     </a>
                 </div>
